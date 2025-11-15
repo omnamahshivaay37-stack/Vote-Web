@@ -3,21 +3,13 @@ import react from "@vitejs/plugin-react-swc";
 import path from "path";
 import { componentTagger } from "lovable-tagger";
 
-// GitHub Pages ke liye IMPORTANT:
-// Base = "/REPO_NAME/"
 export default defineConfig(({ mode }) => ({
-  base: "/Vote-Web/", // <-- Yahan apna repo name daalna hi hoga
-
+  base: "/Vote-Web/",   // <--- MOST IMPORTANT LINE FOR GITHUB PAGES
   server: {
     host: "::",
     port: 8080,
   },
-
-  plugins: [
-    react(),
-    mode === "development" && componentTagger()
-  ].filter(Boolean),
-
+  plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
